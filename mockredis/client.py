@@ -1060,6 +1060,13 @@ class MockRedis(object):
         else:
             return [choice(list(redis_set)) for _ in xrange(abs(number))]
 
+    def randomkey(self):
+        """Emulate randomkey."""
+        keys = self.redis.keys()
+        if not keys:
+            return None
+        return choice(keys)
+
     def srem(self, key, *values):
         """Emulate srem."""
         redis_set = self._get_set(key, 'SREM')

@@ -252,3 +252,8 @@ class TestRedis(object):
         eq_(1, self.redis.dbsize())
         del self.redis["foo"]
         eq_(0, self.redis.dbsize())
+
+    def test_randomkey(self):
+        eq_(None, self.redis.randomkey())
+        self.redis["foo"] = "bar"
+        eq_("foo", self.redis.randomkey())
