@@ -256,4 +256,4 @@ class TestRedis(object):
     def test_randomkey(self):
         eq_(None, self.redis.randomkey())
         self.redis["foo"] = "bar"
-        eq_("foo", self.redis.randomkey())
+        eq_(b"foo", self.redis.randomkey())
