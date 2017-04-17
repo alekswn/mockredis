@@ -1065,7 +1065,7 @@ class MockRedis(object):
         keys = self.redis.keys()
         if not keys:
             return None
-        return choice(keys)
+        return choice(list(keys))
 
     def srem(self, key, *values):
         """Emulate srem."""
